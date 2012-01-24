@@ -1,0 +1,12 @@
+#PBS -A csc079
+#PBS -N Graph
+#PBS -j oe
+#PBS -l walltime=02:00:00,nodes=1:ppn=16
+#PBS -l gres=widow2%widow3%widow1
+#PBS -V
+cd $PBS_O_WORKDIR
+date
+uname -a
+#./Graph.py /tmp/work/d8w/data/data/soc/phy.9250 /tmp/work/d8w/data/data/soc/phy.9250.new
+./Graph.py /tmp/work/d8w/data/data/soc/enron.28400 /tmp/work/d8w/data/data/soc/enron.28400.new
+                                                                                                                                           
