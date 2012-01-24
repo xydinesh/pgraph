@@ -1,6 +1,8 @@
 #!/usr/bin/python
 import sys
 import GraphException
+import logging
+#import argparse
 
 """
 This Graph library will build an object for undirected graphs from DIMACS files.
@@ -12,6 +14,21 @@ class Graph:
         self._buf = []
         self._n = 0
         self._e = 0
+        #self._parser = argparse.ArgumentParser(description="Process CMD options")
+        logging.basicConfig(filename="graph.log", filemod="a+", level=logging.DEBUG)
+        #__addOptions__()
+
+    """
+    Method to populate options
+    """
+    def __addOptions__(self):
+        self._parser.add_argument('integers', metavar='N', type=int, nargs='+',
+                            help='an integer for the accumulator')
+        self._parser.add_argument('--sum', dest='accumulate', action='store_const',
+                            const=sum, default=max,
+                            help='sum the integers (default: find the max)')
+        args = self._parser.parse_args()
+        print args
 
     """
     Reading graph from a DIMACS file
@@ -81,13 +98,25 @@ if __name__ == "__main__":
             print("%s filename outputname") % (sys.argv[0])
             sys.exit(-1)
         g = Graph(sys.argv[1])
+        logging.info("Reading graph")
         g.read()
-        g.isSimple()
+
+        #logging.info("check whether graph is a simple graph")
+        #g.isSimple()
+
+        logging.info("making graph simple")
         g.makeSimple()
-        g.isSimple()
+
+        logging.info("writing new graph"+sys.argv[2])
         g.writeGraph(sys.argv[2]);
+
+        g.isSimple()
+
+
     except GraphException.GraphException, e:
         print e.value
+        logging.debug(e.value)
                 
 
         
+
