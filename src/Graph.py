@@ -70,12 +70,13 @@ class Graph:
         if ecount != self._e:
             x = "Wrong edge count: "+str(self._e)+", correct: "+str(ecount)
             raise GraphException.GraphException(x)
+        logging.info(self._file+" is a simple graph");
 
     def makeSimple(self):
         ecount = 0;
         for i in xrange(self._n):
             for j in xrange(self._n):
-                if (j > i) and (self._buf[i][j] == 1):
+                if (self._buf[i][j] == 1):
                     self._buf[j][i] = 0
                     ecount += 1
         self._e = ecount
@@ -115,7 +116,7 @@ if __name__ == "__main__":
 
     except GraphException.GraphException, e:
         print e.value
-        logging.debug(e.value)
+        logging.error(e.value)
                 
 
         

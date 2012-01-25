@@ -8,5 +8,5 @@ cd $PBS_O_WORKDIR
 date
 uname -a
 #./Graph.py /tmp/work/d8w/data/data/soc/phy.9250 /tmp/work/d8w/data/data/soc/phy.9250.new
-./Graph.py /tmp/work/d8w/data/data/soc/enron.28400 /tmp/work/d8w/data/data/soc/enron.28400.new
-                                                                                                                                           
+#./Graph.py /tmp/work/d8w/data/data/soc/enron.28400 /tmp/work/d8w/data/data/soc/enron.28400.new
+./Graph.py /tmp/work/d8w/data/data/soc/astro.295 /tmp/work/d8w/data/data/soc/astro.295.new                                                                                                                                           
